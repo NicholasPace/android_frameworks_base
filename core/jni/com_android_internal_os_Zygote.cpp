@@ -484,6 +484,8 @@ static pid_t ForkAndSpecializeCommon(JNIEnv* env, uid_t uid, gid_t gid, jintArra
     RuntimeAbort(env, __LINE__, "Unable to restat file descriptor table.");
   }
 
+  ResetNicePriority(env);
+
   pid_t pid = fork();
 
   if (pid == 0) {
